@@ -1,25 +1,30 @@
-[build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.8.0,<4"]
+[tool.poetry]
+name = "cropdoc"
+version = "0.1.0"
+description = "A4, task 1"
+authors = ["Vlad Smirnov"]
+readme = "README.md"
 
-[project]
-name = "course_intro_ocr_t1"
-version = "0.1.1"
-authors = [
-    {name = "Boris Zimka", email = "zimka@phystech.edu"},
-]
-description = "Task1 for ABBYY OCR course."
-requires-python = ">=3.7"
-classifiers = [
-    'Development Status :: 3 - Alpha',
-    'Intended Audience :: End Users/Desktop',
-    'Intended Audience :: Science/Research',
-    'Operating System :: OS Independent',
-    'Programming Language :: Python :: 3 :: Only',
-    'Topic :: Scientific/Engineering'
-]
-dependencies = [
-    "numpy",
-    "matplotlib",
-    "shapely"
+[tool.poetry.dependencies]
+python = "^3.9,<3.12"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+numpy = "^1.26.4"
+docopt = "^0.6.2"
+keras = "^3.1.1"
+matplotlib = "^3.8.3"
+opencv-python = "^4.9.0.80"
+scikit-image = "^0.22.0"
+
+[tool.poetry.group.tensorflow.dependencies]
+tensorflow = {version = "^2.13.0" }
+# https://github.com/tensorflow/tensorflow/blob/adb39b04e9cb116df4659a7e2de9eea27e62f25c/tensorflow/tools/pip_package/setup.py#L107-L108
+# https://github.com/python-poetry/poetry/issues/8271#issuecomment-1697740447
+tensorflow-io-gcs-filesystem = [
+    { version = ">= 0.23.1", markers = "platform_machine!='arm64' or platform_system!='Darwin'" },
+    { version = "< 0.32.0", markers = "platform_system == 'Windows'" }
 ]
