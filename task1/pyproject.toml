@@ -1,5 +1,4 @@
 [tool.poetry]
-package-mode = false
 name = "cropdoc"
 version = "0.1.0"
 description = "A4, task 1"
