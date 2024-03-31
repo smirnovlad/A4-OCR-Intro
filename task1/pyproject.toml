@@ -7,6 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9,<3.12"
+shapely = "^2.0.3"
+imutils = "^0.5.4"
 
 [build-system]
 requires = ["poetry-core"]
@@ -22,6 +24,12 @@ scikit-image = "^0.22.0"
 
 [tool.poetry.group.tensorflow.dependencies]
 tensorflow = {version = "^2.13.0" }
+#tensorflow-macos = { version = "^2.13.0", platform = "darwin", markers = "platform_machine=='arm64'" }
+tensorflow-intel = { version = "^2.13.0", platform = "win32" }
+tensorflow-cpu = [
+    { version = "^2.13.0", platform = "linux", markers = "platform_machine!='arm64' and platform_machine!='aarch64'" },
+    { version = "^2.13.0", platform = "darwin", markers = "platform_machine!='arm64' and platform_machine!='aarch64'" },]
+#tensorflow-cpu-aws = { version = "^2.13.0", platform = "linux", markers = "platform_machine=='arm64' or platform_machine=='aarch64'" }
 # https://github.com/tensorflow/tensorflow/blob/adb39b04e9cb116df4659a7e2de9eea27e62f25c/tensorflow/tools/pip_package/setup.py#L107-L108
 # https://github.com/python-poetry/poetry/issues/8271#issuecomment-1697740447
 tensorflow-io-gcs-filesystem = [
