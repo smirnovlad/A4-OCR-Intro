@@ -18,6 +18,7 @@ class CombinedLoss(nn.Module):
 
         self.bce = nn.BCEWithLogitsLoss()
         self.dice_loss = DiceLoss()
+        self.alpha = alpha
 
     def forward(self, pred, target):
         return self.alpha * self.dice_loss(pred, target) + (1 - self.alpha) * self.bce(pred, target)
